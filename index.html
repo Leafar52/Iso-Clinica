@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
+<script>document.documentElement.classList.add('js')</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ISO Clínica Odontológica Garavelo</title>
@@ -125,15 +126,13 @@ section{padding:clamp(80px,10vw,136px) 0}
 .card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
 .card h3{font:500 1.2rem/1.2 var(--sans);letter-spacing:-.01em}
 .card p{font-size:.9rem;color:var(--texto);line-height:1.5;min-height:4.5em}
-.card img{border-radius:16px;aspect-ratio:1/1;object-fit:cover;width:100%;margin-top:auto}
 .treat-cta{display:flex;justify-content:center;gap:12px;margin-top:40px;flex-wrap:wrap}
 @media (max-width:1060px){.treat{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.treat{grid-template-columns:1fr}.card img{aspect-ratio:4/3}.card p{min-height:0}}
+@media (max-width:560px){.treat{grid-template-columns:1fr}.card-img{aspect-ratio:4/3}.card p{min-height:0}}
 
 /* Equipe */
 .team-wrap{overflow:hidden}
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.member img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px;background:var(--menta)}
 .member b{display:block;margin-top:16px;font-weight:500;font-size:1.0625rem}
 .member span{font-size:.9rem;color:var(--texto)}
 .member.cta-card{background:var(--menta);border-radius:24px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:4/5}
@@ -203,6 +202,42 @@ section{padding:clamp(80px,10vw,136px) 0}
 .fab{position:fixed;right:16px;bottom:16px;z-index:40;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:none;place-items:center;box-shadow:0 10px 26px rgba(18,59,64,.35)}
 .fab svg{width:30px;height:30px}
 @media (max-width:900px){.fab{display:grid}}
+
+/* Entrada ao rolar */
+html.js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.16,.8,.3,1),transform .85s cubic-bezier(.16,.8,.3,1);transition-delay:calc(var(--i,0) * 110ms)}
+html.js [data-reveal].in{opacity:1;transform:translateY(0)}
+
+/* Hover e microinterações */
+.nav a{position:relative;padding-bottom:4px}
+.nav a::after{content:"";position:absolute;left:50%;right:50%;bottom:0;height:1.5px;background:currentColor;transition:left .3s ease,right .3s ease}
+.nav a:hover::after{left:0;right:0}
+.logo-mk{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.logo:hover .logo-mk{transform:rotate(-8deg) scale(1.06)}
+.hero-panel .chip{transition:transform .35s ease}
+.hero-panel:hover .chip{transform:translateY(-5px)}
+.hero-photo{overflow:hidden}
+.hero-photo img{transition:transform .9s cubic-bezier(.16,.8,.3,1)}
+.hero-panel:hover .hero-photo img{transform:scale(1.06)}
+.card-img{overflow:hidden;border-radius:16px;margin-top:auto;aspect-ratio:1/1}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,.8,.3,1)}
+.card:hover .card-img img{transform:scale(1.08)}
+.card-top .round svg{transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.card:hover .card-top .round svg{transform:rotate(45deg)}
+.member-img{overflow:hidden;border-radius:24px;aspect-ratio:4/5;background:var(--menta)}
+.member-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,.8,.3,1)}
+.member:hover .member-img img{transform:scale(1.07)}
+.band img{transition:transform 1.1s cubic-bezier(.16,.8,.3,1)}
+.band:hover img{transform:scale(1.05)}
+.rv{transition:transform .3s ease,box-shadow .3s ease}
+.rv:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(18,59,64,.1)}
+.av{transition:transform .3s ease}
+.rv:hover .av{transform:scale(1.1)}
+.family{transition:transform .3s ease}
+.family:hover{transform:translateY(-4px)}
+.feats li{transition:padding-left .3s ease}
+.feats li:hover{padding-left:10px}
+.feats .ic{transition:background .3s ease,color .3s ease}
+.feats li:hover .ic{background:var(--petroleo);color:var(--porcelana)}
 </style>
 </head>
 <body>
@@ -262,46 +297,46 @@ section{padding:clamp(80px,10vw,136px) 0}
 
   <section id="sobre" aria-labelledby="sobre-t">
     <div class="wrap about">
-      <div>
+      <div data-reveal>
         <h2 class="tt h2" id="sobre-t">Cuidado de verdade<em>do jeito que você é</em></h2>
         <p class="lead">A ISO Garavelo é uma clínica de bairro, conduzida por mulheres empreendedoras, feita para quem quer tratar os dentes com calma, entender cada etapa e pagar um preço justo.</p>
         <a class="btn btn-dark" href="https://wa.me/5562996703607" target="_blank" rel="noopener">Falar com a recepção</a>
       </div>
       <ul class="feats">
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span><div><b>Atenção da recepção à cadeira</b><span>Os pacientes citam o acolhimento da equipe em quase todas as avaliações.</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/></svg></span><div><b>Tudo explicado com clareza</b><span>Você sai da avaliação sabendo o que precisa, quanto tempo leva e quanto custa.</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2c-.4-.9-1.5-1.5-2.8-1.5-1.6 0-2.8.9-2.8 2.1 0 2.9 5.6 1.5 5.6 4.3 0 1.2-1.2 2.1-2.8 2.1-1.3 0-2.4-.6-2.8-1.5M12 6v1.7M12 16.3V18"/></svg></span><div><b>Preços acessíveis</b><span>Tratamentos completos com valores pensados para a realidade da região.</span></div></li>
-        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.5-3.6 3.2-6 6.5-6s6 2.4 6.5 6M15 14.3c2.9-.4 5.6 1.6 6.5 5.7"/></svg></span><div><b>Espaço acolhedor para todos</b><span>Empresa que acolhe a comunidade LGBTQ+.</span></div></li>
+        <li data-reveal style="--i:0"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span><div><b>Atenção da recepção à cadeira</b><span>Os pacientes citam o acolhimento da equipe em quase todas as avaliações.</span></div></li>
+        <li data-reveal style="--i:1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/></svg></span><div><b>Tudo explicado com clareza</b><span>Você sai da avaliação sabendo o que precisa, quanto tempo leva e quanto custa.</span></div></li>
+        <li data-reveal style="--i:2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2c-.4-.9-1.5-1.5-2.8-1.5-1.6 0-2.8.9-2.8 2.1 0 2.9 5.6 1.5 5.6 4.3 0 1.2-1.2 2.1-2.8 2.1-1.3 0-2.4-.6-2.8-1.5M12 6v1.7M12 16.3V18"/></svg></span><div><b>Preços acessíveis</b><span>Tratamentos completos com valores pensados para a realidade da região.</span></div></li>
+        <li data-reveal style="--i:3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M2.5 20c.5-3.6 3.2-6 6.5-6s6 2.4 6.5 6M15 14.3c2.9-.4 5.6 1.6 6.5 5.7"/></svg></span><div><b>Espaço acolhedor para todos</b><span>Empresa que acolhe a comunidade LGBTQ+.</span></div></li>
       </ul>
     </div>
   </section>
 
   <section id="tratamentos" aria-labelledby="trat-t" style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="tt h2" id="trat-t">Nossos tratamentos<em>para cada sorriso</em></h2>
         <p class="lead">Tudo começa por uma avaliação. O dentista examina, mostra as opções e monta o plano com você.</p>
       </div>
       <div class="treat">
-        <a class="card" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20saber%20sobre%20implante%20dent%C3%A1rio." target="_blank" rel="noopener">
+        <a class="card" data-reveal style="--i:0" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20saber%20sobre%20implante%20dent%C3%A1rio." target="_blank" rel="noopener">
           <div class="card-top"><h3>Implante dentário</h3><span class="round" aria-hidden="true"><svg><use href="#arr"/></svg></span></div>
           <p>Repõe dentes perdidos com pino fixo e coroa. Volta a mastigação firme.</p>
-          <img src="img/implante.jpg" alt="Implante dentário com coroa" loading="lazy">
+          <div class="card-img"><img src="img/implante.jpg" alt="Implante dentário com coroa" loading="lazy"></div>
         </a>
-        <a class="card" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20saber%20sobre%20ortodontia." target="_blank" rel="noopener">
+        <a class="card" data-reveal style="--i:1" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20saber%20sobre%20ortodontia." target="_blank" rel="noopener">
           <div class="card-top"><h3>Ortodontia</h3><span class="round" aria-hidden="true"><svg><use href="#arr"/></svg></span></div>
           <p>Aparelho e alinhadores para alinhar os dentes e corrigir a mordida.</p>
-          <img src="img/orto.jpg" alt="Paciente colocando alinhador ortodôntico" loading="lazy">
+          <div class="card-img"><img src="img/orto.jpg" alt="Paciente colocando alinhador ortodôntico" loading="lazy"></div>
         </a>
-        <a class="card" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20saber%20sobre%20facetas%20de%20resina." target="_blank" rel="noopener">
+        <a class="card" data-reveal style="--i:2" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20saber%20sobre%20facetas%20de%20resina." target="_blank" rel="noopener">
           <div class="card-top"><h3>Facetas de resina</h3><span class="round" aria-hidden="true"><svg><use href="#arr"/></svg></span></div>
           <p>Ajustam cor, formato e espaços entre os dentes em poucas sessões.</p>
-          <img src="img/facetas.jpg" alt="Sorriso com dentes claros e alinhados" loading="lazy">
+          <div class="card-img"><img src="img/facetas.jpg" alt="Sorriso com dentes claros e alinhados" loading="lazy"></div>
         </a>
-        <a class="card" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta." target="_blank" rel="noopener">
+        <a class="card" data-reveal style="--i:3" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta." target="_blank" rel="noopener">
           <div class="card-top"><h3>Clínica geral</h3><span class="round" aria-hidden="true"><svg><use href="#arr"/></svg></span></div>
           <p>Limpeza, restaurações e check-ups para a família toda.</p>
-          <img src="img/geral.jpg" alt="Dentista examinando paciente" loading="lazy">
+          <div class="card-img"><img src="img/geral.jpg" alt="Dentista examinando paciente" loading="lazy"></div>
         </a>
       </div>
       <div class="treat-cta">
@@ -313,16 +348,16 @@ section{padding:clamp(80px,10vw,136px) 0}
 
   <section id="equipe" aria-labelledby="eq-t" style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="tt h2" id="eq-t">Quem cuida<em>do seu sorriso</em></h2>
         <div class="arrows" aria-hidden="true"><span class="round"><svg><use href="#left"/></svg></span><span class="round"><svg><use href="#right"/></svg></span></div>
       </div>
       <div class="team-wrap">
         <div class="team">
-          <div class="member"><img src="img/eq1.jpg" alt="Dr. Pedro" loading="lazy"><b>Dr. Pedro</b><span>Cirurgião-dentista</span></div>
-          <div class="member"><img src="img/eq2.jpg" alt="Dr. Bruno" loading="lazy"><b>Dr. Bruno</b><span>Cirurgião-dentista</span></div>
-          <div class="member"><img src="img/eq3.jpg" alt="Mariana" loading="lazy"><b>Mariana</b><span>Recepção e agendamentos</span></div>
-          <div class="member cta-card"><p>A equipe que nossos pacientes citam pelo nome.</p><a class="btn btn-dark" href="#avaliacoes">Ver avaliações</a></div>
+          <div class="member" data-reveal style="--i:0"><div class="member-img"><img src="img/eq1.jpg" alt="Dr. Pedro" loading="lazy"></div><b>Dr. Pedro</b><span>Cirurgião-dentista</span></div>
+          <div class="member" data-reveal style="--i:1"><div class="member-img"><img src="img/eq2.jpg" alt="Dr. Bruno" loading="lazy"></div><b>Dr. Bruno</b><span>Cirurgião-dentista</span></div>
+          <div class="member" data-reveal style="--i:2"><div class="member-img"><img src="img/eq3.jpg" alt="Mariana" loading="lazy"></div><b>Mariana</b><span>Recepção e agendamentos</span></div>
+          <div class="member cta-card" data-reveal style="--i:3"><p>A equipe que nossos pacientes citam pelo nome.</p><a class="btn btn-dark" href="#avaliacoes">Ver avaliações</a></div>
         </div>
       </div>
     </div>
@@ -331,7 +366,7 @@ section{padding:clamp(80px,10vw,136px) 0}
   <div class="wrap">
     <div class="band">
       <img src="img/band.jpg" alt="" loading="lazy">
-      <div class="band-copy">
+      <div class="band-copy" data-reveal>
         <h2 class="tt">Seu novo sorriso<em>começa numa conversa</em></h2>
         <p>Mande uma mensagem contando o que te incomoda. A recepção responde, encontra um horário e já marca sua avaliação.</p>
         <a class="btn btn-light" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"><svg aria-hidden="true" style="color:var(--wa)"><use href="#wa"/></svg>Chamar no WhatsApp</a>
@@ -341,28 +376,28 @@ section{padding:clamp(80px,10vw,136px) 0}
 
   <section id="avaliacoes" aria-labelledby="av-t">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="tt h2" id="av-t">Quem já veio<em>recomenda</em></h2>
       </div>
       <div class="reviews">
-        <div class="rv-intro">
+        <div class="rv-intro" data-reveal style="--i:0">
           <div>
             <div class="rv-score"><strong>4,9</strong><span class="stars" aria-label="5 estrelas">★★★★★</span></div>
             <small>Média de 239 avaliações no Google</small>
           </div>
           <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=ISO+Cl%C3%ADnica+Odontol%C3%B3gica+Garavelo" target="_blank" rel="noopener">Ler no Google</a>
         </div>
-        <figure class="rv">
+        <figure class="rv" data-reveal style="--i:1">
           <div class="rv-who"><span class="av">CT</span><div><b>Central Telas de Proteções</b><span>Google · há 1 mês</span></div></div>
           <q>Fui muito bem atendida desde a recepção até o atendimento odontológico. A equipe é muito atenciosa, educada e profissional, sempre preocupada em explicar tudo com clareza.</q>
           <span class="stars" aria-label="5 estrelas">★★★★★</span>
         </figure>
-        <figure class="rv">
+        <figure class="rv" data-reveal style="--i:2">
           <div class="rv-who"><span class="av">RC</span><div><b>Rodrigo Castro</b><span>Google · há 3 meses</span></div></div>
           <q>Ótimo atendimento do Dr. Pedro e da recepcionista Mariana, foram cordiais e solícitos.</q>
           <span class="stars" aria-label="5 estrelas">★★★★★</span>
         </figure>
-        <figure class="rv">
+        <figure class="rv" data-reveal style="--i:3">
           <div class="rv-who"><span class="av">G</span><div><b>Paciente no Google</b><span>Avaliação verificada</span></div></div>
           <q>Ótimo atendimento, preços super acessíveis, de ótima localização.</q>
           <span class="stars" aria-label="5 estrelas">★★★★★</span>
@@ -373,7 +408,7 @@ section{padding:clamp(80px,10vw,136px) 0}
 
   <section id="visite" aria-labelledby="vi-t" style="padding-top:0">
     <div class="wrap visit">
-      <div class="info">
+      <div class="info" data-reveal>
         <h2 class="tt h2" id="vi-t">Venha nos<em>visitar</em></h2>
         <div><h3>Endereço</h3><address>Av. da Igualdade, Qd. 90, Lt. 19, nº 101<br>St. Garavelo, Aparecida de Goiânia – GO<br>74930-530</address></div>
         <div><h3>Horários</h3>
@@ -387,10 +422,10 @@ section{padding:clamp(80px,10vw,136px) 0}
         <a class="btn btn-light" style="align-self:flex-start" href="https://www.google.com/maps/dir/?api=1&destination=Av.+da+Igualdade,+101+-+St.+Garavelo,+Aparecida+de+Goi%C3%A2nia+-+GO,+74930-530" target="_blank" rel="noopener">Traçar rota</a>
       </div>
       <div class="visit-side">
-        <div class="map" id="map">
+        <div class="map" id="map" data-reveal>
           <iframe title="Mapa da clínica" loading="lazy" src="https://www.google.com/maps?q=Av.+da+Igualdade,+101+-+St.+Garavelo,+Aparecida+de+Goi%C3%A2nia+-+GO,+74930-530&output=embed"></iframe>
         </div>
-        <div class="family">
+        <div class="family" data-reveal style="--i:1">
           <img src="img/familia.jpg" alt="Família sorrindo" loading="lazy">
           <div><b>Atendimento para a família toda</b><p>Das primeiras consultas das crianças ao implante dos avós, tudo no mesmo endereço do Garavelo.</p></div>
         </div>
@@ -412,5 +447,25 @@ section{padding:clamp(80px,10vw,136px) 0}
 </footer>
 
 <a class="fab" href="https://wa.me/5562996703607?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="Agendar pelo WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('[data-reveal]');
+  if(!els.length) return;
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.18, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
